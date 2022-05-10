@@ -1,26 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ <ul>
+  <resource-item
+   v-for="res of storedResources"
+   :key="res.id"
+   :title="res.title"
+   :description="res.description"
+   :link="res.link"
+  ></resource-item>
+ </ul>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ResourceItem from "./components/resource-item/ResourceItem.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+ components: {
+  ResourceItem,
+ },
+ data() {
+  return {
+   storedResources: [
+    {
+     id: "01",
+     title: "VueJS Guide",
+     description: "The official Vue.js documentation.",
+     link: "https://vuejs.org",
+    },
+    {
+     id: "02",
+     title: "ReactJS Guide",
+     description: "The official React.js documentation.",
+     link: "https://it.reactjs.org/",
+    },
+   ],
+  };
+ },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+* {
+ box-sizing: border-box;
+}
+
+html {
+ font-family: "Montserrat", sans-serif;
+}
+
+body {
+ margin: 0;
 }
 </style>
