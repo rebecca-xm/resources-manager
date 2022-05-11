@@ -3,7 +3,7 @@
   <resource-card>
    <header>
     <h3>{{ title }}</h3>
-    <button>Delete</button>
+    <resource-button>Delete</resource-button>
    </header>
    <p>{{ description }}</p>
    <nav>

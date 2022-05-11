@@ -1,6 +1,6 @@
 <template>
  <the-header title="StoreYourDocs" />
- <stored-resources :resources="storedResources"></stored-resources>
+ <stored-resources :resources="storedResources" />
 </template>
 
 <script>
