@@ -1,34 +1,16 @@
 <template>
  <the-header title="StoreYourDocs" />
- <stored-resources :resources="storedResources" />
+ <the-resources />
 </template>
 
 <script>
-import StoredResources from "./components/resource-items/StoredResources.vue";
 import TheHeader from "./components/layouts/TheHeader.vue";
+import TheResources from "./components/resource-items/TheResources.vue";
 
 export default {
  components: {
-  StoredResources,
   TheHeader,
- },
- data() {
-  return {
-   storedResources: [
-    {
-     id: "01",
-     title: "VueJS Guide",
-     description: "The official Vue.js documentation.",
-     link: "https://vuejs.org",
-    },
-    {
-     id: "02",
-     title: "ReactJS Guide",
-     description: "The official React.js documentation.",
-     link: "https://it.reactjs.org/",
-    },
-   ],
-  };
+  TheResources,
  },
 };
 </script>
