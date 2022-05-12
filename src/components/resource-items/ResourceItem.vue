@@ -1,52 +1,53 @@
 <template>
- <li>
-  <resource-card>
-   <header>
-    <h3>{{ title }}</h3>
-    <resource-button>Delete</resource-button>
-   </header>
-   <p>{{ description }}</p>
-   <nav>
-    <a :href="link">Visit Resource</a>
-   </nav>
-  </resource-card>
- </li>
+  <li>
+    <resource-card>
+      <header>
+        <h3>{{ title }}</h3>
+        <resource-button @click="deleteResource(id)">Delete</resource-button>
+      </header>
+      <p>{{ description }}</p>
+      <nav>
+        <a :href="link">Visit Resource</a>
+      </nav>
+    </resource-card>
+  </li>
 </template>
 
 <script>
 export default {
- props: ["title", "description", "link"],
+  props: ["title", "description", "link", "id"],
+  inject: ["deleteResource"],
 };
 </script>
 
 <style scoped>
 li {
- margin: auto;
- max-width: 35rem;
+  margin: auto;
+  max-width: 35rem;
 }
 
 header {
- display: flex;
- justify-content: space-between;
- align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 h3 {
- font-size: 1rem;
- margin: 0.5rem 0;
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
 
 p {
- margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 a {
- text-decoration: none;
- color: #37b9da;
+  text-decoration: none;
+  color: #37b9da;
 }
 
 a:hover,
 a:active {
- color: #627b91;
+  color: #627b91;
 }
 </style>
