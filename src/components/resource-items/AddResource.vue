@@ -1,9 +1,9 @@
 <template>
  <resource-card>
-  <form>
+  <form @submit.prevent="submitResource">
    <div class="form">
     <label for="title">Title</label>
-    <input id="title" name="title" type="text" />
+    <input id="title" name="title" type="text" ref="titleInput" />
    </div>
    <div class="form">
     <label for="description">Description</label>
@@ -12,11 +12,12 @@
      id="description"
      cols="30"
      rows="10"
+     ref="descInput"
     ></textarea>
    </div>
    <div class="form">
     <label for="link">Link</label>
-    <input id="link" name="link" type="url" />
+    <input id="link" name="link" type="url" ref="linkInput" />
    </div>
    <div>
     <resource-button type="submit">Add Resource</resource-button>
@@ -24,6 +25,21 @@
   </form>
  </resource-card>
 </template>
+
+<script>
+export default {
+ inject: ["addResource"],
+ methods: {
+  submitResource() {
+   const submittedTitle = this.$refs.titleInput.value;
+   const submittedDesc = this.$refs.descInput.value;
+   const submittedLink = this.$refs.linkInput.value;
+
+   this.addResource(submittedTitle, submittedDesc, submittedLink);
+  },
+ },
+};
+</script>
 
 <style scoped>
 input,
