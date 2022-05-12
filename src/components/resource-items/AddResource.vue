@@ -1,4 +1,15 @@
 <template>
+ <resource-modale v-if="invalidInput" title="Invalid Input">
+  <template v-slot:default>
+   <p>
+    If you see this message, please check all inputs and make sure they are all
+    filled.
+   </p>
+  </template>
+  <template v-slot:actions>
+   <resource-button @click="closeModale"> I understand </resource-button>
+  </template>
+ </resource-modale>
  <resource-card>
   <form @submit.prevent="submitResource">
    <div class="form">
@@ -29,13 +40,30 @@
 <script>
 export default {
  inject: ["addResource"],
+ data() {
+  return {
+   invalidInput: false,
+  };
+ },
  methods: {
   submitResource() {
    const submittedTitle = this.$refs.titleInput.value;
    const submittedDesc = this.$refs.descInput.value;
    const submittedLink = this.$refs.linkInput.value;
 
+   if (
+    submittedTitle.trim() === "" ||
+    submittedDesc.trim() === "" ||
+    submittedLink.trim() === ""
+   ) {
+    this.invalidInput = true;
+    return;
+   }
+
    this.addResource(submittedTitle, submittedDesc, submittedLink);
+  },
+  closeModale() {
+   this.invalidInput = false;
   },
  },
 };
